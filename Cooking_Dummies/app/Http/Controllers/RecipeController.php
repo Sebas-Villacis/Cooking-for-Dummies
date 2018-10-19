@@ -40,7 +40,7 @@ class RecipeController extends Controller
        //estos id cambiaran si las informacion es modificada
        $nuevaReceta->id=Hash::make(substr($categoria,0,3).substr($nombreReceta(1,2)).$tiempo.substr($imagen->getClientOriginalName(),-1,4).rand(2,4));
        $nuevaReceta->nombreReceta=$nombreReceta;
-       $nuevaReceta->categoria=$request->$categoria;
+       $nuevaReceta->categoria=$categoria;
        $nuevaReceta->tiempo=$request->$tiempo;
        $nuevaReceta->descripcion=$request->input('descripcion');
        $nuevaReceta->imagen=$imagen;
