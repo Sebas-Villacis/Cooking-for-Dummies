@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('Competencia','CompetenciasDP@index');
+Route::get('Competencia/{id}','CompetenciasDP@getByNombre');
+Route::post('Competencia','CompetenciasDP@store');
+Route::put('Competencia/{id}','CompetenciasDP@update');
+Route::delete('Competencia/{id}','CompetenciasDP@destroy');
