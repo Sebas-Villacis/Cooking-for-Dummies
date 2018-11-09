@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PantallaInicioPage } from '../pages/pantalla-inicio/pantalla-inicio';
 import  {RecetasPage} from '../pages/recetas/recetas';
+import { CompetenciaPage } from '../pages/competencia/competencia';
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,6 +29,7 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Inicio', component: PantallaInicioPage },
       { title: 'Recetas', component: RecetasPage },
+      { title: 'Competencia', component:CompetenciaPage }
     ];
 
   }

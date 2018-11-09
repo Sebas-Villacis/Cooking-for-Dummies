@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PantallaInicioPage } from '../pages/pantalla-inicio/pantalla-inicio';
 import  {RecetasPage} from '../pages/recetas/recetas';
+import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
+import { CompetenciaPage } from '../pages/competencia/competencia';
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +20,8 @@ import  {RecetasPage} from '../pages/recetas/recetas';
     ListPage,
     LoginPage,
     PantallaInicioPage,
-    RecetasPage
+    RecetasPage,
+    CompetenciaPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import  {RecetasPage} from '../pages/recetas/recetas';
     ListPage,
     LoginPage,
     PantallaInicioPage,
-    RecetasPage
+    RecetasPage,
+    CompetenciaPage
   ],
   providers: [
     StatusBar,
