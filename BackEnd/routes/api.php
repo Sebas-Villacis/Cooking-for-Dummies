@@ -30,3 +30,8 @@ Route::get('Competencia/{id}','RecipeController@getByTiempo');
 Route::post('Competencia','RecipeController@store');
 Route::put('Competencia/{id}','RecipeController@update');
 Route::delete('Competencia/{id}','RecipeController@destroy');
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+});
