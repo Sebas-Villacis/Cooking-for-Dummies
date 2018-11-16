@@ -31,3 +31,8 @@ Route::get('RecetasByTiempo','RecipeController@getByTiempo');
 Route::post('guardarRecetas','RecipeController@store');
 Route::put('actulizarRecetas','RecipeController@update');
 Route::delete('eliminarRecetas','RecipeController@destroy');
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+});

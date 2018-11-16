@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+<<<<<<< HEAD
 Route::get('Recetas','RecipeController@index');
 Route::get('RecetasByCategoria/{buscar}','RecipeController@getByCategoria');
 Route::get('RecetasByNombre','RecipeController@getByNombre');
@@ -26,3 +27,11 @@ Route::post('guardarRecetas','RecipeController@store');
 Route::put('actulizarRecetas','RecipeController@update');
 Route::delete('eliminarRecetas','RecipeController@destroy');
 Route::get('RecetasImagenes','RecipeController@getImages');
+=======
+
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+});
+>>>>>>> 4025c83761161349894c68af03b3e45580df2b28
