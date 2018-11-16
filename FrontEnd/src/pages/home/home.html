@@ -6,15 +6,29 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button><br>
-  <button ion-button (click)="goCompletarReceta()">Primer Reto</button><br>
-  <button ion-button (click)="goLogroPrincipiantesEnamoradizos()">Logro</button>
+<ion-content class="tutorial-page">
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary"(click)="YourFancyButton()">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <img [src]="slide.title" class="slide-image"/>
+      <br>
+      <img [src]="slide.image" class="slide-image"/>
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <img src="assets/imgs/3.3.jpeg" class="slide-image"/>
+      <br>
+      <img src="assets/imgs/3.jpeg" class="slide-image"/>
+      <br>
+      <button ion-button large clear icon-end color="primary"(click)="YourFancyButton()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
