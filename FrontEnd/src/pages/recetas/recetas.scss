@@ -1,7 +1,11 @@
 page-recetas {
-    .image-container{
-        background-size: cover;
+    .image-container {
         min-height: 200px;
+        background-size: cover;
+    }
+    img{
+        height: 200px;
+        width: 100%;
     }
     
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { CompletarRecetaPage } from '../completar-receta/completar-receta';
-import { LogroPrincipiantesEnamoradizosPage } from '../logro-principiantes-enamoradizos/logro-principiantes-enamoradizos';
+
 
 @Component({
   selector: 'page-home',
@@ -16,7 +16,5 @@ export class HomePage {
   goCompletarReceta():void{
     this.navCtrl.push(CompletarRecetaPage);
   }
-  goLogroPrincipiantesEnamoradizos():void{
-    this.navCtrl.push(LogroPrincipiantesEnamoradizosPage);
-  }
+  
 }

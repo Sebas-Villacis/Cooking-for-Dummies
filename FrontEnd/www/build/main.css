@@ -25675,6 +25675,11 @@ ion-navbar.toolbar {
 }
 
 page-recetas .image-container {
-  background-size: cover;
   min-height: 200px;
+  background-size: cover;
+}
+
+page-recetas img {
+  height: 200px;
+  width: 100%;
 }

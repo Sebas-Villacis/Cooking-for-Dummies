@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('Recetas','RecipeController@index');
+Route::get('RecetasByCategoria/{buscar}','RecipeController@getByCategoria');
+Route::get('RecetasByNombre','RecipeController@getByNombre');
+Route::get('RecetasByTiempo','RecipeController@getByTiempo');
+Route::post('guardarRecetas','RecipeController@store');
+Route::put('actulizarRecetas','RecipeController@update');
+Route::delete('eliminarRecetas','RecipeController@destroy');
+Route::get('RecetasImagenes','RecipeController@getImages');

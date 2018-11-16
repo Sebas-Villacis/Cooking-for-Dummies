@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the RecetasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { RecetaServiciosProvider } from '../../providers/receta-servicios/receta-servicios';
 @IonicPage()
 @Component({
   selector: 'page-recetas',
@@ -16,14 +9,51 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class RecetasPage {
   
   public isSearchbarOpened =false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  recetas: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
+    this.RecetaServiciosProvider.getRecetas()
+        .subscribe(
+            (data)=> {
+              this.recetas = data;
+            },
+            (error) => {
+              console.log(error);
+            }
+        )
+       
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RecetasPage');
   }
-  onSearch(event){
-    console.log(event.target.value);
+  searchCategory(event){
+    console.log(event);
+    this.RecetaServiciosProvider.getRecetasByCategory(event)
+        .subscribe(
+            (data)=> {
+              this.recetas = data;
+            },
+            (error) => {
+              console.log(error);
+            }
+        )
+    
   }
-
+  
+  searchNombre(event) {
+    var val = event.target.value;
+    console.log(val);
+    this.RecetaServiciosProvider.getRecetasByName(val)
+        .subscribe(
+            (data)=> {
+              this.recetas = data;
+            },
+            (error) => {
+              console.log(error);
+            }
+        )
+   
+  }
+ 
 }

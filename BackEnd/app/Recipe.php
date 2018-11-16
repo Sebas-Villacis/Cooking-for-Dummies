@@ -10,6 +10,6 @@ class Recipe extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;
     public $timestamps = false;
-    protected $fillable = ['id','categoria', 'usuclave', 'nombreReceta','nombreReceta','ingredientes',
-                            'descripcion','tiempo','imagen'];
+    protected $fillable = ['recid','reccategoria', 'recnombre', 'rectiempo','recingredientes','recpasos',
+                            'recimagen'];
 }

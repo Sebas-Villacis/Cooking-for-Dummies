@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipe;
+use Illuminate\Support\Facades\Hash;
 class RecipeController extends Controller
 
 {
     public function index()
     {
-        //
+        return view('Recetas');
     }
     //!En el modelo se especificara los campos la primary key
     //! eso sera presentado cuando toco hacer la capa del modelo de acuerdo a la planificación
@@ -20,35 +21,37 @@ class RecipeController extends Controller
         //mimes indica el formato de imagen perimitido
         //max tamaño maximo de imagen.
         $request->validate([
-            'categoria' => 'bail|required',
-            'nombreReceta' => 'required',
-            'tiempo' => 'required',
-            'descripcion' => 'required',
-            'imagen' => 'required|image|mimes:jpeg,jpg,gif|max"2048',
+            'reccategoria' => 'bail|required',
+            'recnombre' => 'required',
+            'rectiempo' => 'required',
+            'recingredientes' => 'required',
+            'recimagen' => 'required',
                                 
         ], [
-            'categoria.required' => 'El campo :attribute es obligatorio',
-            'nombreReceta.required' => 'El campo :attribute es obligatorio',
-            'tiempo.required' => 'El campo :attribute es obligatorio',
-            'descripcion.required' => 'El campo :attribute es obligatorio',
-            'imagen.required' => 'El campo :attribute es obligatorio', 
+            'reccategori.required' => 'El campo :attribute es obligatorio',
+            'recnombre.required' => 'El campo :attribute es obligatorio',
+            'rectiempo.required' => 'El campo :attribute es obligatorio',
+            'recingredientes.required' => 'El campo :attribute es obligatorio',
+            'recimagen.required' => 'El campo :attribute es obligatorio', 
         ]);
         //! Debe verse en done se va a guardar las imagenes en una carpeta en laravel o ionic
         //! ahorita solo guarda el path de la imagen en la base de datos.
-        $categoria = $request->input('categoria');
-        $nombreReceta = $request->input('nombreReceta');
-        $tiempo = $request->input('tiempo');
-        $imagen = $request->file('imagen');
+        $categoria = $request->input('reccategoria');
+        $nombreReceta = $request->input('recnombre');
+        $tiempo = $request->input('rectiempo');
+        $imagen = $request->input('recimagen');
+        $ingredientes=$request->input('recingredientes');
        $nuevaReceta = new Recipe();
        //tamaño total del campo id 13
        //implementacion del concepto blockchain como generador de id unicos.
        //estos id cambiaran si las informacion es modificada
-       $nuevaReceta->id=Hash::make(substr($categoria,0,3).substr($nombreReceta(1,2)).$tiempo.substr($imagen->getClientOriginalName(),-1,4).rand(2,4));
-       $nuevaReceta->nombreReceta=$nombreReceta;
-       $nuevaReceta->categoria=$categoria;
-       $nuevaReceta->tiempo=$request->$tiempo;
-       $nuevaReceta->descripcion=$request->input('descripcion');
-       $nuevaReceta->imagen=$imagen;
+       $nuevaReceta->recid=Hash::make(substr($categoria,0,3).substr($nombreReceta,1,3).$tiempo.substr($ingredientes,0,2).rand(2,4));
+       $nuevaReceta->recnombre=$nombreReceta;
+       $nuevaReceta->reccategoria=$categoria;
+       $nuevaReceta->rectiempo=$tiempo;
+       $nuevaReceta->recingredientes=$ingredientes;
+       $nuevaReceta->recpasos=$request->input('recpasos');
+       $nuevaReceta->recimagen=$imagen;
        $nuevaReceta->save();
        return back()->with(['message'=> 'Receta ingresada con éxito']);
        
@@ -97,27 +100,37 @@ class RecipeController extends Controller
         }//returna a la vista con un mensaje de error
         return back()->with(['message'=> 'Error,comuniquese con el administardor']);
     }
-    public function getByCategoria(Request $request)
+    public function getByCategoria($buscar)
     {
-
-        $recetas =  Recipe::where('categoria','LIKE','%'.$request->input('categoria'.'%') )->get();
+        
+        $recetas =  Array('data'=>Recipe::where('reccategoria','=',$buscar)->get());
         if ($recetas != null) {
-            return $recetas ;//retorna un arreglo con todas las recetas que cumplen
+            return json_encode($recetas) ;//retorna un arreglo con todas las recetas que cumplen
             //con el nombre 
         }
-        return back()->with(['message'=> 'No existe la categoria solicitada']);
+        return "no existe la receta solicitada";
 
     }
-    public function getByNombre(Request $request)
+    
+    public function getImages(Request $request)
     {
 
-        $recetas =  Recipe::where('nombreReceta','LIKE','%'.$request->input('nombreReceta'.'%') )->get();
+        $recetas =  Array('data' =>Recipe::all());
+        $rel = json_encode($recetas);
+            return $rel;
+        
+
+    }
+    public function getByNombre($nombre)
+    {
+        
+       
+        $recetas =  Array('data'=>Recipe::where('recnombre','LIKE','%'.strtoupper($nombre).'%')->get());
         if ($recetas != null) {
-            return $recetas ;//retorna un arreglo con todas las recetas que cumplen
+            return json_encode($recetas);//retorna un arreglo con todas las recetas que cumplen
             //con el nombre solicitado
         }
-        return back()->with(['message'=> 'No existe la receta solicitada']);
-
+        return "no existe la receta solicitada";
     }
     public function getByTiempo(Request $request)
     {

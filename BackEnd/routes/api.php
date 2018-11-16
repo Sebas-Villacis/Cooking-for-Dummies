@@ -24,9 +24,10 @@ Route::put('Competencia/{id}','CompetenciasDP@update');
 Route::delete('Competencia/{id}','CompetenciasDP@destroy');
 //recetas
 Route::get('Recetas','RecipeController@index');
-Route::get('Competencia/{id}','RecipeController@getByCategoria');
-Route::get('Competencia/{id}','RecipeController@getByNombre');
-Route::get('Competencia/{id}','RecipeController@getByTiempo');
-Route::post('Competencia','RecipeController@store');
-Route::put('Competencia/{id}','RecipeController@update');
-Route::delete('Competencia/{id}','RecipeController@destroy');
+Route::get('/RecetasByCategoria/{buscar}','RecipeController@getByCategoria');
+Route::get('/RecetasByNombre/{nombre}','RecipeController@getByNombre');
+Route::get('/RecetasImagenes','RecipeController@getImages');
+Route::get('RecetasByTiempo','RecipeController@getByTiempo');
+Route::post('guardarRecetas','RecipeController@store');
+Route::put('actulizarRecetas','RecipeController@update');
+Route::delete('eliminarRecetas','RecipeController@destroy');
