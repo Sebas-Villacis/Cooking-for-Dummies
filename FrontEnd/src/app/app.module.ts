@@ -14,6 +14,9 @@ import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
 import { CompetenciaPage } from '../pages/competencia/competencia';
 import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-servicios';
+import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
+import { LogroPage } from '../pages/logro/logro';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +25,9 @@ import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-se
     LoginPage,
     PantallaInicioPage,
     RecetasPage,
-    CompetenciaPage
+    CompetenciaPage,
+    CompletarRecetaPage,
+    LogroPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-se
     LoginPage,
     PantallaInicioPage,
     RecetasPage,
-    CompetenciaPage
+    CompetenciaPage,
+    CompletarRecetaPage,
+    LogroPage
   ],
   providers: [
     StatusBar,

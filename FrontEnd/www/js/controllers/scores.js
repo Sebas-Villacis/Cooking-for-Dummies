@@ -4,7 +4,7 @@
         $http.get('http://localhost:8000/api/scores').success(function(data){
             $scope.scores = data;
         });
-        .error(function(error){
+        error(function(error){
             debugger;
         });
     });

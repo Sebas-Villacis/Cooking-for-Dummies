@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { PantallaInicioPage } from '../pages/pantalla-inicio/pantalla-inicio';
 import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPage } from '../pages/competencia/competencia';
+import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
+import { LogroPage } from '../pages/logro/logro';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -29,7 +32,9 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Inicio', component: PantallaInicioPage },
       { title: 'Recetas', component: RecetasPage },
-      { title: 'Competencia', component:CompetenciaPage }
+      { title: 'Competencia', component:CompetenciaPage },
+      { title: 'Receta Completa', component:CompletarRecetaPage },
+      { title: 'Logro', component:LogroPage }
     ];
 
   }
