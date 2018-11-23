@@ -19,6 +19,9 @@ header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Author
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Login
+Route::post('login', 'APIUserController@login');
+Route::post('register', 'APIUserController@register');
 //competencia
 Route::get('Competencia','CompetenciasDP@index');
 Route::get('Competencia/{id}','CompetenciasDP@getByNombre');

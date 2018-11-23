@@ -7,7 +7,7 @@ import { RecetaServiciosProvider } from '../../providers/receta-servicios/receta
   templateUrl: 'recetas.html',
 })
 export class RecetasPage {
-  
+
   public isSearchbarOpened =false;
   recetas: any;
 
@@ -21,7 +21,7 @@ export class RecetasPage {
               console.log(error);
             }
         )
-       
+
   }
 
   ionViewDidLoad() {
@@ -38,9 +38,9 @@ export class RecetasPage {
               console.log(error);
             }
         )
-    
+
   }
-  
+
   searchNombre(event) {
     var val = event.target.value;
     console.log(val);
@@ -53,7 +53,7 @@ export class RecetasPage {
               console.log(error);
             }
         )
-   
+
   }
- 
+
 }

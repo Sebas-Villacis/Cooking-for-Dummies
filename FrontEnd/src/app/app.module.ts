@@ -14,6 +14,7 @@ import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
 import { CompetenciaPage } from '../pages/competencia/competencia';
 import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-servicios';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -43,7 +44,8 @@ import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-se
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RecetaServiciosProvider
+    RecetaServiciosProvider,
+    LoginServiceProvider
   ]
 })
 export class AppModule {}

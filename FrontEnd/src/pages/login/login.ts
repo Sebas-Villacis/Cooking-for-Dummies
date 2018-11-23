@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginServiceProvider } from '../../providers/login-service/login-service';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,8 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  usuarios: any;
+  user
+  constructor(public navCtrl: NavController, public navParams: NavParams, public LoginServiceProvider:LoginServiceProvider) {
+    this.LoginServiceProvider.login()
+        .subscribe(
+            (data)=> {
+              this.recetas = data;
+            },
+            (error) => {
+              console.log(error);
+            }
+        )
   }
 
   ionViewDidLoad() {
