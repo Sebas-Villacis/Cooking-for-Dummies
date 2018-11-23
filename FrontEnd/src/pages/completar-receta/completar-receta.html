@@ -4,40 +4,45 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header> 
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>FELICIDADES</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-  <h1>FELICIDADES!!!</h1>
+<ion-card text-center>
+
+  <br><h3>FELICIDADES!!!</h3><br>
   <ion-img src="../../assets/imgs/primera_receta_completa.jpeg" width="300" height="300"></ion-img>
   <ion-label>¿QUÉ QUIEREN PREPARAR LA PRÓXIMA VEZ?</ion-label>
-  <hr style="border:1px dotted gray; width:300px" />
-
+  <hr style="border:1px dotted gray; width:300px" class="slide-image"/>
+  
   <ion-list>
     <ion-item>
-      <ion-label>POSTRES</ion-label>
+      <ion-label>Postres</ion-label>
       <ion-checkbox [(ngModel)]="postres"></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>COCTELES</ion-label>
+      <ion-label>Cocteles</ion-label>
       <ion-checkbox [(ngModel)]="cocteles" disabled="false"></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>SNACKS</ion-label>
+      <ion-label>Snacks</ion-label>
       <ion-checkbox [(ngModel)]="snacks"></ion-checkbox>
     </ion-item>
     <ion-item>
-      <ion-label>CENAS</ion-label>
+      <ion-label>Cenas</ion-label>
       <ion-checkbox [(ngModel)]="cenas"></ion-checkbox>
     </ion-item>
-  </ion-list>
+  </ion-list><br>
 
-  <button ion-button color="danger" (click)="goBack()">OK</button>
-  
+  <button ion-button color="danger" (click)="goBack()" round>OK</button>
 
+</ion-card>
 </ion-content>
