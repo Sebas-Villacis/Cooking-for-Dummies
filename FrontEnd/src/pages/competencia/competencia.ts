@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RecetaServiciosProvider } from '../../providers/receta-servicios/receta-servicios';
+import { RecetasPage } from '../recetas/recetas';
 
 /**
  * Generated class for the CompetenciaPage page.
@@ -14,12 +16,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'competencia.html',
 })
 export class CompetenciaPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  recetas: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
+    this.searchNombre('lasagna');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompetenciaPage');
   }
+  YourFancyButton(){
+    this.navCtrl.setRoot(RecetasPage);
+    }
+
+    searchNombre(event) {
+      var val = event.target.value;
+      console.log(val);
+      this.RecetaServiciosProvider.getRecetasByName(val)
+          .subscribe(
+              (data)=> {
+                this.recetas = data;
+              },
+              (error) => {
+                console.log(error);
+              }
+          )
+     
+    }
 
 }
