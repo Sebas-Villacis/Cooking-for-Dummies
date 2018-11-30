@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecetaServiciosProvider } from '../../providers/receta-servicios/receta-servicios';
+import { RecetaDettalePage } from './../receta-dettale/receta-dettale';
 @IonicPage()
 @Component({
   selector: 'page-recetas',
@@ -10,7 +11,6 @@ export class RecetasPage {
 
   public isSearchbarOpened =false;
   recetas: any;
-
   constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
     this.RecetaServiciosProvider.getRecetas()
         .subscribe(
@@ -39,6 +39,13 @@ export class RecetasPage {
             }
         )
 
+  }
+  click(event,item)
+  {
+    this.navCtrl.push(RecetaDettalePage,{
+      item:item
+      
+    });
   }
 
   searchNombre(event) {

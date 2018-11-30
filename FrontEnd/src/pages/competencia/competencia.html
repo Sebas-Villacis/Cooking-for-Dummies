@@ -14,17 +14,7 @@
 
   <ion-card>
 
-    <img src="assets/imgs/tiramisu.jpg"/>
-
-    <ion-slides pager style="margin-top:15%;margin-bottom: 10%;" *ngFor="let receta of recetas?.data">
-
-      <ion-slide *ngFor="let paso of receta.recpasos.split(';')">
-
-        <p [innerHTML]="receta">
-          
-        </p>
-      </ion-slide>
-      <ion-slide>
+    <img src="{{recetas.recimagen}}"/>
 
         <p>
           SE TERMINARON LOS PASOS
@@ -33,8 +23,6 @@
           Finalizar
           <ion-icon name="arrow-forward"></ion-icon>
         </button>
-      </ion-slide>
-    </ion-slides>
 
   </ion-card>
 

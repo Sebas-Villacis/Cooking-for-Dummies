@@ -14,7 +14,9 @@ import { LoginServiceProvider } from '../../providers/login-service/login-servic
   selector: 'page-login',
   templateUrl: 'login.html',
 })
+
 export class LoginPage {
+/*
   usuarios: any;
   user
   constructor(public navCtrl: NavController, public navParams: NavParams, public LoginServiceProvider:LoginServiceProvider) {
@@ -32,5 +34,5 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
+*/
 }

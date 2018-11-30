@@ -41,7 +41,10 @@
       <ion-row>
         <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of recetas?.data">
           <div class="image-container">
-            <img [src]="image.recimagen" alt="">
+              <button  (click)="click($event,image)" block>
+                  <img [src]="image.recimagen" alt="">
+             </button>
+            
           </div>
         </ion-col>
       </ion-row>

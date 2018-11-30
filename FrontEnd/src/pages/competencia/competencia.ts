@@ -18,7 +18,9 @@ import { RecetasPage } from '../recetas/recetas';
 export class CompetenciaPage {
   recetas: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
-    this.searchNombre('lasagna');
+    //this.searchNombre('lasagna');
+    this.recetas=navParams.get('item');
+    
   }
 
   ionViewDidLoad() {
@@ -28,19 +30,6 @@ export class CompetenciaPage {
     this.navCtrl.setRoot(RecetasPage);
     }
 
-    searchNombre(event) {
-      var val = event.target.value;
-      console.log(val);
-      this.RecetaServiciosProvider.getRecetasByName(val)
-          .subscribe(
-              (data)=> {
-                this.recetas = data;
-              },
-              (error) => {
-                console.log(error);
-              }
-          )
-     
-    }
+    
 
 }

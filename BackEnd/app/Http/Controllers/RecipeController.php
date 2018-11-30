@@ -104,12 +104,13 @@ class RecipeController extends Controller
     {
         
         $recetas =  Array('data'=>Recipe::where('reccategoria','=',$buscar)->get());
+        
+        
         if ($recetas != null) {
             return json_encode($recetas) ;//retorna un arreglo con todas las recetas que cumplen
             //con el nombre 
         }
         return "no existe la receta solicitada";
-
     }
     
     public function getImages(Request $request)

@@ -14,13 +14,11 @@ import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
 import { CompetenciaPage } from '../pages/competencia/competencia';
 import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-servicios';
-<<<<<<< HEAD
 import { LoginServiceProvider } from '../providers/login-service/login-service';
-=======
 import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
 import { LogroPage } from '../pages/logro/logro';
+import { RecetaDettalePage } from '../pages/receta-dettale/receta-dettale';
 
->>>>>>> 88c7a7f2703ae949a64bcabec6b51774d9341a5f
 @NgModule({
   declarations: [
     MyApp,
@@ -31,7 +29,8 @@ import { LogroPage } from '../pages/logro/logro';
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
-    LogroPage
+    LogroPage,
+    RecetaDettalePage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +47,8 @@ import { LogroPage } from '../pages/logro/logro';
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
-    LogroPage
+    LogroPage,
+    RecetaDettalePage
   ],
   providers: [
     StatusBar,
