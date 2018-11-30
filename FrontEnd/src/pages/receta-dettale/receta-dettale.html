@@ -5,16 +5,15 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  
-
+    <ion-navbar>
+        <ion-title>PASOS</ion-title>
+      </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
     <img src="{{value.recimagen}}" alt="">
     <label for="">Ingedientes</label>
-    <input type="hidden" value="hola" id="val"/>
     <div *ngFor="let ingredientes of value.recingredientes.split(';')">
         <p>
           {{ingredientes}}
