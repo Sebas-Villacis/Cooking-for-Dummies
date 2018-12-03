@@ -214,7 +214,7 @@ var map = {
 		0
 	],
 	"../pages/login/login.module": [
-		287,
+		286,
 		4
 	],
 	"../pages/logro/logro.module": [
@@ -222,7 +222,7 @@ var map = {
 		3
 	],
 	"../pages/pantalla-inicio/pantalla-inicio.module": [
-		286,
+		287,
 		2
 	],
 	"../pages/recetas/recetas.module": [
@@ -495,8 +495,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/completar-receta/completar-receta.module#CompletarRecetaPageModule', name: 'CompletarRecetaPage', segment: 'completar-receta', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/inicio/inicio.module#InicioPageModule', name: 'InicioPage', segment: 'inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/logro/logro.module#LogroPageModule', name: 'LogroPage', segment: 'logro', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pantalla-inicio/pantalla-inicio.module#PantallaInicioPageModule', name: 'PantallaInicioPage', segment: 'pantalla-inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pantalla-inicio/pantalla-inicio.module#PantallaInicioPageModule', name: 'PantallaInicioPage', segment: 'pantalla-inicio', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recetas/recetas.module#RecetasPageModule', name: 'RecetasPage', segment: 'recetas', priority: 'low', defaultHistory: [] }
                     ]
                 }),
