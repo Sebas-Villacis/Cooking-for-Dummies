@@ -6,38 +6,29 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>TIRAMISU</ion-title>
+    <ion-title>PASOS</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="cards-bg">
 
   <ion-card>
-
-    <img src="assets/imgs/tiramisu.jpg"/>
-
-    <ion-card-content>
-      <ion-card-title>
-        PASO 1
-      </ion-card-title>
-      <p>
-        Mesclar el licor con el helado
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='ios-arrow-dropleft'></ion-icon>
+    <img src="{{recetas.recimagen}}"/>
+    <ion-slides pager style="margin-top:15%;margin-bottom: 10%;" >
+      <ion-slide *ngFor="let pasos of recetas.recpasos.split(';')">
+        <p [innerHTML]="pasos">
+        </p>
+      </ion-slide>
+      <ion-slide>
+        <p>
+          SE TERMINARON LOS PASOS
+        </p>
+        <button ion-button large clear icon-end color="primary"(click)="YourFancyButton()" style="margin-bottom:10%;">
+          Finalizar
+          <ion-icon name="arrow-forward"></ion-icon>
         </button>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button clear small color="danger" icon-start>
-          <ion-icon name='ios-arrow-dropright'></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-
+      </ion-slide>
+    </ion-slides>
   </ion-card>
 
 

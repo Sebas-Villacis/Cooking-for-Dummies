@@ -12,6 +12,8 @@ import { CompetenciaPage } from '../pages/competencia/competencia';
 import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
 import { LogroPage } from '../pages/logro/logro';
 
+import { OAuthService } from 'angular-oauth2-oidc';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,9 +24,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,oauthService: OAuthService) {
     this.initializeApp();
-
+    if (oauthService.hasValidIdToken()) {
+      this.rootPage = HomePage;
+    } else {
+      this.rootPage = HomePage;
+    }
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },

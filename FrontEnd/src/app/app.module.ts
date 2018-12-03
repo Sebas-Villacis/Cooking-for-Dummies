@@ -2,7 +2,7 @@ import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -14,9 +14,13 @@ import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
 import { CompetenciaPage } from '../pages/competencia/competencia';
 import { RecetaServiciosProvider } from '../providers/receta-servicios/receta-servicios';
+import { LoginServiceProvider } from '../providers/login-service/login-service';
 import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
 import { LogroPage } from '../pages/logro/logro';
+import { RecetaDettalePage } from '../pages/receta-dettale/receta-dettale';
 
+import { OAuthModule } from 'angular-oauth2-oidc';
+//import { LoginPageModule } from '../pages/login/login.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,11 +31,14 @@ import { LogroPage } from '../pages/logro/logro';
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
-    LogroPage
+    LogroPage,
+    RecetaDettalePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    //LoginPageModule,
+    OAuthModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -44,13 +51,15 @@ import { LogroPage } from '../pages/logro/logro';
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
-    LogroPage
+    LogroPage,
+    RecetaDettalePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RecetaServiciosProvider
+    RecetaServiciosProvider,
+    LoginServiceProvider
   ]
 })
 export class AppModule {}
