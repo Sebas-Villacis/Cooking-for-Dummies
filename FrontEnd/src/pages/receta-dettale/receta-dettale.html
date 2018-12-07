@@ -5,24 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-        <ion-title>PASOS</ion-title>
-      </ion-navbar>
+  <ion-navbar> <ion-title>PASOS</ion-title> </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-    <img src="{{value.recimagen}}" alt="">
-    <label for="">Ingedientes</label>
-    <div *ngFor="let ingredientes of value.recingredientes.split(';')">
-        <p>
-          {{ingredientes}}
-        </p>
+  <h1>{{ value.recnombre }}</h1>
+  <img src="{{value.recimagen}}" alt="" class="center" />
+  <h2>INGREDIENTES</h2>
+  <hr class="new1" />
+  <div *ngFor="let ingredientes of value.recingredientes.split(';')">
+    <ul>
+      <li>{{ ingredientes }}</li>
+    </ul>
+  </div>
+  <h2>ACTIVAR</h2>
+  <hr class="new1" />
+  <div class="container">
+    <div class="row">
+      <div class="col"><button  ><img src="assets/imgs/radio-microphone.png" id="voz"></button></div>
+      <div class="col"><button><img src="assets/imgs/stopwatch.png" id="chrono"></button></div>
     </div>
-    <div >
-        <button (click)="click($event)">
-            Comenzar Preparación
-       </button>
-    </div>
-   
+  </div>
+  
+  <div>
+      <button (click)="click($event)" ion-button color="danger">COMENZAR PREPARACION</button></div>
 </ion-content>
