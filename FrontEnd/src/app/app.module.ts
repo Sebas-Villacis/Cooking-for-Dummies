@@ -20,6 +20,7 @@ import { LogroPage } from '../pages/logro/logro';
 import { RecetaDettalePage } from '../pages/receta-dettale/receta-dettale';
 
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { ControlVozPage } from '../pages/control-voz/control-voz';
 //import { LoginPageModule } from '../pages/login/login.module';
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CompetenciaPage,
     CompletarRecetaPage,
     LogroPage,
-    RecetaDettalePage
+    RecetaDettalePage,
+    ControlVozPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     CompetenciaPage,
     CompletarRecetaPage,
     LogroPage,
-    RecetaDettalePage
+    RecetaDettalePage,
+    ControlVozPage
   ],
   providers: [
     StatusBar,
