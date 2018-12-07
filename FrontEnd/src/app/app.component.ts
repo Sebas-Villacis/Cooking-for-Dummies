@@ -13,6 +13,7 @@ import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta'
 import { LogroPage } from '../pages/logro/logro';
 
 import { OAuthService } from 'angular-oauth2-oidc';
+import { ControlVozPage } from '../pages/control-voz/control-voz';
 
 @Component({
   templateUrl: 'app.html'
@@ -40,7 +41,10 @@ export class MyApp {
       { title: 'Recetas', component: RecetasPage },
       { title: 'Competencia', component:CompetenciaPage },
       { title: 'Receta Completa', component:CompletarRecetaPage },
-      { title: 'Logro', component:LogroPage }
+      { title: 'Logro', component:LogroPage },
+      { title: 'ControlVoz', component:ControlVozPage }
+
+
     ];
 
   }

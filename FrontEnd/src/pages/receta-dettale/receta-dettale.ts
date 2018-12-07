@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CompetenciaPage } from '../competencia/competencia';
+
+import { ControlVozPage } from '../control-voz/control-voz';
 
 
 /**
@@ -30,7 +31,7 @@ export class RecetaDettalePage {
   }
   click(event)
   {
-    this.navCtrl.push(CompetenciaPage,{
+    this.navCtrl.push(ControlVozPage,{
       item:this.getValue()
     });
   }

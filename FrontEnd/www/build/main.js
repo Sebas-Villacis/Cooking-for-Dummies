@@ -46,9 +46,10 @@ var RecetaServiciosProvider = /** @class */ (function () {
     };
     RecetaServiciosProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Platform */]) === "function" && _b || Object])
     ], RecetaServiciosProvider);
     return RecetaServiciosProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=receta-servicios.js.map
@@ -382,35 +383,39 @@ webpackEmptyAsyncContext.id = 178;
 var map = {
 	"../pages/competencia/competencia.module": [
 		715,
-		7
+		18
 	],
 	"../pages/completar-receta/completar-receta.module": [
 		716,
-		6
+		17
+	],
+	"../pages/control-voz/control-voz.module": [
+		725,
+		11
 	],
 	"../pages/inicio/inicio.module": [
 		717,
-		0
+		10
 	],
 	"../pages/login/login.module": [
 		718,
-		5
+		16
 	],
 	"../pages/logro/logro.module": [
 		719,
-		4
+		15
 	],
 	"../pages/pantalla-inicio/pantalla-inicio.module": [
 		720,
-		3
+		14
 	],
 	"../pages/receta-dettale/receta-dettale.module": [
 		721,
-		2
+		13
 	],
 	"../pages/recetas/recetas.module": [
 		722,
-		1
+		12
 	]
 };
 function webpackAsyncContext(req) {
