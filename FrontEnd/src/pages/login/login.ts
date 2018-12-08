@@ -1,74 +1,72 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import * as OktaAuth from '@okta/okta-auth-js';
-import { HomePage } from '../home/home';
+import { Component } from '@angular/core';
+import { IonicPage, NavController,LoadingController, Loading, AlertController} from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html',
 })
 export class LoginPage {
-  @ViewChild('email') email: any;
-  private username: string;
-  private password: string;
-  private error: string;
 
-  constructor(private navCtrl: NavController, private oauthService: OAuthService) {
-    oauthService.redirectUri = window.location.origin;
-    oauthService.clientId = '0oahxwjp2rPwb3rjG0h7';
-    oauthService.scope = 'openid profile email';
-    oauthService.issuer = 'https://dev-614753.oktapreview.com/oauth2/default';
-    oauthService.tokenValidationHandler = new JwksValidationHandler();
+  myForm: FormGroup;
+  user: Observable<firebase.User>;
+  public loading:Loading;
 
-    // Load Discovery Document and then try to login the user
-    this.oauthService.loadDiscoveryDocument().then(() => {
-      this.oauthService.tryLogin();
+  constructor(
+    public navCtrl: NavController,
+    public formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth,
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
+  ) {
+    this.myForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
+    this.user = afAuth.authState;
   }
 
-  ionViewDidLoad(): void {
-    setTimeout(() => {
-      this.email.setFocus();
-    }, 500);
-  }
+  loginUser(){
 
-  login(): void {
-    this.oauthService.createAndSaveNonce().then(nonce => {
-      const authClient = new OktaAuth({
-        clientId: this.oauthService.clientId,
-        redirectUri: this.oauthService.redirectUri,
-        url: 'http://localhost:8100/',
-        issuer: 'default'
-      });
-      return authClient.signIn({
-        username: this.username,
-        password: this.password
-      }).then((response) => {
-        if (response.status === 'SUCCESS') {
-          return authClient.token.getWithoutPrompt({
-            nonce: nonce,
-            responseType: ['id_token', 'token'],
-            sessionToken: response.sessionToken,
-            scopes: this.oauthService.scope.split(' ')
-          })
-            .then((tokens) => {
-              const idToken = tokens[0].idToken;
-              const accessToken = tokens[1].accessToken;
-              const keyValuePair = `#id_token=${encodeURIComponent(idToken)}&access_token=${encodeURIComponent(accessToken)}`;
-              this.oauthService.tryLogin({
-                customHashFragment: keyValuePair,
-                disableOAuth2StateCheck: true
-              });
-            this.navCtrl.push(HomePage);
-            });
-        } else {
-          throw new Error('We cannot handle the ' + response.status + ' status');
-        }
-      }).fail((error) => {
-        console.error(error);
-        this.error = error.message;
+    console.log("Email:" + this.myForm.value.email);
+    console.log("Password:" + this.myForm.value.password);
+   
+
+    this.afAuth.auth.signInWithEmailAndPassword(this.myForm.value.email, this.myForm.value.password).then(() => {
+      console.log("User logging");
+      this.navCtrl.setRoot('HomePage');
+    }, (err) => {
+      this.loading.dismiss().then( () => {
+        let alert = this.alertCtrl.create({
+          message: err.message,
+          buttons: [
+            {
+              text: "Ok",
+              role: 'cancel'
+            }
+          ]
+        });
+        alert.present();
       });
     });
+
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+    this.loading.present();
   }
+  
+
+  goToSignup(){
+    this.navCtrl.push('SignupPage');
+  }
+
+  goToResetPassword(){
+    this.navCtrl.push('ResetPasswordPage');
+  }
+
 }
