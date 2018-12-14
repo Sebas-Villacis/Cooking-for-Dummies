@@ -48,4 +48,17 @@ export class AuthProvider {
       });
     });
   }
+
+  checkAuthentication(){
+    return new Promise((resolve,reject)=>{
+      this.storage.get('token').then((value)=>{
+        this.token = value;
+        resolve(this.token)
+      })
+    });
+  }
+
+  logout(){
+    this.storage.set('token','');
+  }
 }

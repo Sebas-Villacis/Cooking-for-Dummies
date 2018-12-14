@@ -5,11 +5,7 @@
   "proxies": [
     {
       "path": "/api",
-<<<<<<< HEAD
-      "proxyUrl": "http://192.168.100.10:8100/api"
-=======
       "proxyUrl": "http://192.168.1.4:8100/api"
->>>>>>> 9c6c3a6e9be5ac9aa3e739b313df281688dd8e82
     }
   ]
 }

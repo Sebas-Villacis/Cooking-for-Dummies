@@ -1,4 +1,4 @@
-import { LoginPage } from './../pages/login/login';
+import { LoginPage } from '../pages/login/login';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -11,10 +11,7 @@ import  {RecetasPage} from '../pages/recetas/recetas';
 import { CompetenciaPage } from '../pages/competencia/competencia';
 import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
 import { LogroPage } from '../pages/logro/logro';
-
-import { OAuthService } from 'angular-oauth2-oidc';
 import { ControlVozPage } from '../pages/control-voz/control-voz';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,13 +22,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,oauthService: OAuthService) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-    if (oauthService.hasValidIdToken()) {
-      this.rootPage = HomePage;
-    } else {
-      this.rootPage = HomePage;
-    }
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
