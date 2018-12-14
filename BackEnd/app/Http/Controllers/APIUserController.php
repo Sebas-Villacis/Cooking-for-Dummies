@@ -48,13 +48,6 @@ class APIUserController extends Controller
                     $user->name = request('name');
                     $user->email = request('email');
                     $user->password = Hash::make(request('password'));
-                    $user->address = request('address');
-                    $user->phone = request('phone');
-                    $user->idno = request('idno');
-                    $user->pin = request('pin');
-                    $user->balance = 0;
-                    $user->latitude = request('latitude');
-                    $user->longitude = request('longitude');
                     $user->save();
                     return response()->json(['status' => 'ok'], $this-> successStatus);
                 }
