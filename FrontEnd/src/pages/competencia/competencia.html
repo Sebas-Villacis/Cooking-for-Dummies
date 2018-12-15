@@ -13,22 +13,26 @@
 <ion-content class="cards-bg">
 
   <ion-card>
-    <img src="{{recetas.recimagen}}"/>
-    <ion-slides pager style="margin-top:15%;margin-bottom: 10%;" >
+   <ion-card-header>
+       <img src="{{recetas.recimagen}}" class="center" style="    width: 100px;"/>
+   </ion-card-header>
+   <ion-card-content style="height: 300px;">
+    <ion-slides pager style="margin-top:10%;margin-bottom: 0%;" >
       <ion-slide *ngFor="let pasos of recetas.recpasos.split(';')">
-        <p [innerHTML]="pasos">
+        <p  class="pasos" [innerHTML]="pasos">
         </p>
       </ion-slide>
       <ion-slide>
-        <p>
+        <h2>
           SE TERMINARON LOS PASOS
-        </p>
+        </h2>
         <button ion-button large clear icon-end color="primary"(click)="YourFancyButton()" style="margin-bottom:10%;">
           Finalizar
           <ion-icon name="arrow-forward"></ion-icon>
         </button>
       </ion-slide>
     </ion-slides>
+  </ion-card-content>
   </ion-card>
 
 

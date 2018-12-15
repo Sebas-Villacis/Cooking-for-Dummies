@@ -1,79 +1,31 @@
-<!--
-  Generated template for the RecetasPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
- 
-  <ion-navbar>
-    <ion-title  >Recetas</ion-title>
-  </ion-navbar>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-6>
-        <ion-searchbar (search)="searchNombre($event)"></ion-searchbar>
-            <ion-list>
-                <ion-item *ngFor="let item of items">
-                  {{ item }}
-                </ion-item>
-              </ion-list>
-      </ion-col>
-      <ion-col col-6>
-        <ion-item>
-          <ion-label>Categoria</ion-label>
-          <ion-select [(ngModel)]="filtro" (ionChange)="searchCategory($event)">
-            <ion-option value="Postres">Postres</ion-option>
-            <ion-option value="Bocadillos">Bocadillos</ion-option>
-            <ion-option value="Entrada">Entrada</ion-option>
-            <ion-option value="Plato Fuerte">Plato Fuerte</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-        <div >
-            <hr class="new1" /> 
-            <h3 id="titulo">LAS MEJORES OPCIONES EN PAREJA:</h3>
-            <hr class="new1" />
-          </div>
+page-recetas {
+  .image-container {
+      min-height: 200px;
+      min-width: 200px;
+      background-size: cover;
+  }
+  img{
+      height: 200px;
+      width: 100%;
+  }
+  h3{
       
-
-       
-    </ion-row>
-
-  </ion-grid>
- 
-
-</ion-header>
-
-
-<ion-content padding>
- 
-  <div>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of recetas?.data">
-            <ion-card>
-
-                <ion-card-header>
-                    {{image.recnombre}}
-                </ion-card-header>
-              
-                <ion-card-content class="image-container">
-                    
-                        
-                        <button  (click)="click($event,image)" block>
-                            <img [src]="image.recimagen" alt="">
-                       </button>
-                      
-                   
-                </ion-card-content>
-              
-              </ion-card>
-          
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</ion-content>
+      color: #F60543;
+      
+      font-style: italic;
+      
+  }
+  h5{
+      font-weight: bold;
+      font-style: italic;
+  }
+  hr.new1{
+      border-top: 1px dashed #F60543;
+    }
+  
+    #titulo{
+      color: #F60543;
+      font-weight: bold;
+    }
+  
+}
