@@ -25904,8 +25904,8 @@ page-recetas .image-container {
 }
 
 page-recetas img {
-  height: 200px;
   width: 100%;
+  height: 200px;
 }
 
 page-recetas h3 {
@@ -25925,4 +25925,14 @@ page-recetas hr.new1 {
 page-recetas #titulo {
   color: #F60543;
   font-weight: bold;
+}
+
+page-recetas ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }

@@ -13,7 +13,7 @@ export class RecetaServiciosProvider {
   basepath="/api";
   constructor(public http: HttpClient,private _platform:Platform) {
     if (this._platform.is("cordova")){
-      this.basepath = "http://127.0.0.1:8000/api"
+      this.basepath = "http://172.16.0.165:8100/api"
     }
   }
   getRecetas(){

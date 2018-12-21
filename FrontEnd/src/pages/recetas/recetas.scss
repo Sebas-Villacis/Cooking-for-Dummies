@@ -5,8 +5,8 @@ page-recetas {
       background-size: cover;
   }
   img{
-      height: 200px;
-      width: 100%;
+    width: 100%;
+    height: 200px;
   }
   h3{
       
@@ -27,5 +27,15 @@ page-recetas {
       color: #F60543;
       font-weight: bold;
     }
-  
+    ion-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 90px 1px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+
+      }
+
 }
