@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, ModalController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the LogroPage page.
@@ -18,9 +18,7 @@ export class LogroPage {
   /*constructor(public navCtrl: NavController, public navParams: NavParams) {
   }*/
 
-  constructor(private toastCtrl: ToastController) {
-
-  }
+  constructor(private toastCtrl: ToastController) {}
 
   presentToastPuntosGanados() {
     let toast = this.toastCtrl.create({

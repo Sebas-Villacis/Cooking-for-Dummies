@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the CompletarRecetaPage page.
@@ -16,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 export class CompletarRecetaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -26,4 +26,12 @@ export class CompletarRecetaPage {
     this.navCtrl.pop();
   }
 
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Buen trabajo!',
+      subTitle: '!Has completado un delicioso platillo!',
+      buttons: ['Siguiente']
+    });
+    alert.present();
+  }
 }
