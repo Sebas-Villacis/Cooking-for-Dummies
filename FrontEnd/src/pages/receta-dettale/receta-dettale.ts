@@ -18,6 +18,7 @@ import { ControlVozPage } from '../control-voz/control-voz';
 })
 export class RecetaDettalePage {
   value:any;
+  public timer = 0;  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.value=navParams.get('item');
   }
@@ -35,5 +36,12 @@ export class RecetaDettalePage {
       item:this.getValue()
     });
   }
+  //Se borro la clase TimerCompoent para trabajar en la calse recete-detalle
+  //Probar que funcione al poner clic en el icono de cronometro.
+  startTimer() {
+    var intervalVar = setInterval(function(){
+        this.timer++;
+    }.bind(this),1000)
+}
 
 }
