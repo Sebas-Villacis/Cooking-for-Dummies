@@ -34,27 +34,18 @@ class CompetenciasDP extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nombrecompetencia' => 'bail|required',
-            'tiempo' => 'required',
-            'descripcion' => 'required',
-            'fechacreacion'=> 'required',
-
-        ], [
-            'nombrecompetencia.required' => 'El campo :attribute es obligatorio',
-            'tiempo.required' => 'El campo :attribute es obligatorio',
-            'descripcion.required' => 'El campo :attribute es obligatorio',
-            'fechacreacion.required' => 'El campo :attribute es obligatorio',
-        ]);
-        $competencia = $request->input('nombrecompetencia');
-        $tiempo = $request->input('tiempo');
-        $descripcion = $request->input('descripcion');
-        $fechacreacion = $request->input('fechacreacion');
+        $competencia = $request->input('matnombre');
+        $tiempo = $request->input('mattiempo');
+        $receta = $request->input('recid');
+        $descripcion = $request->input('matdescripcion');
+        $fechacreacion = $request->input('matfechacreacion');
        $newcompetencia = new Competencia();
-       $newcompetencia->nombreReceta=$nombreReceta;
-       $newcompetencia->fechacreacion=$fechacreacion;
-       $newcompetencia->tiempo=$tiempo;
-       $newcompetencia->descripcion=$descripcion;
+       $newcompetencia->matnombre=$nombreReceta;
+       $newcompetencia->matfechacreacion=$fechacreacion;
+       $newcompetencia->mattiempo=$tiempo;
+       $newcompetencia->matdescripcion=$descripcion;
+       $newcompetencia->recid=$receta;
+
        $newcompetencia->save();
        return back()->with(['message'=> 'Competencia creada con éxito']);
     }
@@ -90,35 +81,15 @@ class CompetenciasDP extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nombrecompetencia' => 'bail|required',
-            'tiempo' => 'required',
-            'descripcion' => 'required',
-            'fechacreacion'=> 'required',
-
-        ], [
-            'nombrecompetencia.required' => 'El campo :attribute es obligatorio',
-            'tiempo.required' => 'El campo :attribute es obligatorio',
-            'descripcion.required' => 'El campo :attribute es obligatorio',
-            'fechacreacion.required' => 'El campo :attribute es obligatorio',
-        ]);
-        //cuando este modifcando la  vista de receta y haga click en actutalizar
-        //se enviara el id de la receta alcontrolador, el cual  esta en la vista como un campo oculto
-       $buscarcompetencia = Recipe::find($request->input('id'))->value('id');//obtiene id de la receta  a actualizar 
-       $competencia = $request->input('nombrecompetencia');
-       $tiempo = $request->input('tiempo');
-       $descripcion = $request->input('descripcion');
-       $fechacreacion = $request->input('fechacreacion');
-        $newcompetencia = new Competencia();
-        $newcompetencia->nombreReceta=$nombreReceta;
-        $newcompetencia->fechacreacion=$fechacreacion;
-        $newcompetencia->tiempo=$tiempo;
-        $newcompetencia->descripcion=$descripcion;
-        $newcompetencia->save();
-       $recetaActualizada=Recipe::where('id',$id)
-                                ->update(['nombrecompetencia'=>$nombreReceta],['tiempo'=>$tiempo],
-                                        ['descripcion'=>$fechacreacion],['fechacreacion'=>$fechacreacion]);
-        return back()->with(['message'=> 'Receta actualizada']);
+       $competencia = $request->input('matnombre');
+        $tiempo = $request->input('mattiempo');
+        $receta = $request->input('recid');
+        $descripcion = $request->input('matdescripcion');
+        $fechacreacion = $request->input('matfechacreacion');
+       $recetaActualizada=Competencia::where('id',$id)
+                                ->update(['matnombre'=>$competencia],['recid'=>$receta],['mattiempo'=>$tiempo],
+                                        ['matdescripcion'=>$descripcion],['matfechacreacion'=>$fechacreacion]);
+        return back()->with(['message'=> 'Competencia actualizada']);
     }
 
     /**
@@ -129,7 +100,7 @@ class CompetenciasDP extends Controller
      */
     public function destroy($id)
     {
-        $id = Recipe::where('id', '=', $id);
+        $id = Competencia::where('matnombre', '=', $id);
 
         if ($id != null) {
             $id->delete();//returna a la vista con un mensaje de aprovacion
@@ -138,13 +109,15 @@ class CompetenciasDP extends Controller
         return back()->with(['message'=> 'Error,comuniquese con el administardor']);
     }
 
-    public function getByNombre(Request $request)
+    public function getByNombre($nombre)
     {
-        $recetas =  Recipe::where('nombrecompetencia','LIKE','%'.$request->input('nombrecompetencia'.'%') )->get();
-        if ($recetas != null) {
-            return $recetas ;//retorna un arreglo con todas las recetas que cumplen
+        
+       
+        $competencia =  Array('data'=>Recipe::where('matnombre','LIKE','%'.strtoupper($nombre).'%')->get());
+        if ($competencia != null) {
+            return json_encode($competencia);//retorna un arreglo con todas las recetas que cumplen
             //con el nombre solicitado
         }
-        return back()->with(['message'=> 'No existe la competencia solicitada']);
+        return "no existe la receta solicitada";
     }
 }
