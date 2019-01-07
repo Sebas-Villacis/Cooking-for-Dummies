@@ -30,3 +30,126 @@
     <button ion-button color="secondary" (click)="myLogOut()">Log Out</button>
   </div>
 </ion-content>
+<ion-view view-title="Jokes">
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+	    <input type="text" placeholder="Add new joke.." ng-model="joke">
+	  </label>
+	  <button class="button button-block button-positive" ng-click="addJoke(joke)">
+	  	Add Joke
+	  </button>
+    </div>
+
+	<ion-list can-swipe="listCanSwipe">
+	  	<ion-item ng-repeat="joke in jokes" class="item item-text-wrap">
+
+	    <h2>{{joke.joke}}</h2>
+
+	    <ion-option-button class="button-positive"
+	                       ng-click="updatePopup(joke, 'Update')">
+	      <!-- Edit -->
+	      <i class="icon ion-edit"></i>
+	    </ion-option-button>
+
+	    <ion-option-button class="button-assertive"
+	                       ng-click="deleteJoke($index, joke.joke_id)">
+	      <!-- Delete -->
+	      <i class="icon ion-trash-a"></i>
+	    </ion-option-button>
+
+	  	</ion-item>
+	</ion-list>
+
+  </ion-content>
+</ion-view>
+.controller('JokesCtrl', function($scope, $auth, $http, $ionicPopup) {
+
+  $scope.jokes = [];
+  $scope.error;
+  $scope.joke;
+
+  $scope.listCanSwipe = true;
+
+  // Update Popup
+  $scope.updatePopup = function(joke, label) {
+    console.log(joke,label);
+  $scope.data = joke;
+
+  var myPopup = $ionicPopup.show({
+    template: '<input type="text" ng-model="data.joke">',
+    title: 'Update Joke',
+    // subTitle: 'Please use normal things',
+    scope: $scope,
+    buttons: [
+      // { text: 'Cancel' },
+      {
+        text: '<b>'+label+'</b>',
+        type: 'button-positive',
+        onTap: function(e) {
+          if (!$scope.data.joke) {
+            e.preventDefault();
+          } else {
+            return $scope.data;
+          }
+        }
+      }
+    ]
+  });
+  myPopup.then(function(res) {
+    $scope.updateJoke(res);
+    console.log(res);
+  });
+ };
+
+  $scope.init = function() {
+                $scope.lastpage=1;
+                $http({
+                    url: 'http://localhost:8000/api/v1/jokes',
+                    method: "GET",
+                    params: {page: $scope.lastpage}
+                }).success(function(jokes, status, headers, config) {
+                    $scope.jokes = jokes.data;
+                    $scope.currentpage = jokes.current_page;
+                });
+            };
+    $scope.addJoke = function(joke) {
+
+      console.log("add joke: ",joke);
+
+        $http.post('http://localhost:8000/api/v1/jokes', {
+            body: joke,
+            user_id: $rootScope.currentUser.id
+        }).success(function(response) {
+            $scope.jokes.unshift(response.data);
+            console.log($scope.jokes);
+            $scope.joke = '';
+            console.log("Joke Created Successfully");
+        }).error(function(){
+          console.log("error");
+        });
+    };
+
+    $scope.updateJoke = function(joke){
+      console.log(joke);
+      $http.put('http://localhost:8000/api/v1/jokes/' + joke.joke_id, {
+            body: joke.joke,
+            user_id: $rootScope.currentUser.id
+        }).success(function(response) {
+            console.log("Joke Updated Successfully");
+        }).error(function(){
+          console.log("error");
+        });
+    }
+
+  $scope.deleteJoke = function(index, jokeId){
+      console.log(index, jokeId);
+
+        $http.delete('http://localhost:8000/api/v1/jokes/' + jokeId)
+            .success(function() {
+                $scope.jokes.splice(index, 1);
+            });;
+    }
+
+    $scope.init();
+});
