@@ -25898,16 +25898,9 @@ page-receta-dettale button {
 }
 
 page-recetas .image-container {
-  height: 100%;
-  max-height: 25%;
+  min-height: 25%;
   width: auto;
   background-size: cover;
-}
-
-page-recetas img {
-  height: 100%;
-  max-height: 25%;
-  width: auto;
 }
 
 page-recetas h3 {
