@@ -25898,14 +25898,16 @@ page-receta-dettale button {
 }
 
 page-recetas .image-container {
-  min-height: 200px;
-  min-width: 200px;
+  height: 100%;
+  max-height: 25%;
+  width: auto;
   background-size: cover;
 }
 
 page-recetas img {
-  width: 100%;
-  height: 200px;
+  height: 100%;
+  max-height: 25%;
+  width: auto;
 }
 
 page-recetas h3 {
