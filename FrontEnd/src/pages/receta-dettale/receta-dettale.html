@@ -23,8 +23,11 @@
   <div class="container">
     <div class="row">
       <div class="col"><button  ><img src="assets/imgs/radio-microphone.png" id="voz"></button></div>
-      <div class="col"><button><img src="assets/imgs/stopwatch.png" id="chrono"></button></div>
+      <div class="col"><button (click)="startTimer()"><img src="assets/imgs/stopwatch.png" id="chrono"></button></div>
     </div>
+    <!--AL hacer click en el icono del cronometro se deberia empezar a mmostrar los segudos trasncurridos-->
+    <!--Verificar-->
+    <p>{{timer}}</p>
   </div>
   
   <div>

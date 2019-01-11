@@ -17,6 +17,7 @@ import { RecetasPage } from '../recetas/recetas';
 })
 export class CompetenciaPage {
   recetas: any;
+  public timer = 0;  
   constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
     //this.searchNombre('lasagna');
     this.recetas=navParams.get('item');
@@ -30,6 +31,9 @@ export class CompetenciaPage {
     this.navCtrl.setRoot(RecetasPage);
     }
 
-    
-
+    startTimer() {
+      var intervalVar = setInterval(function(){
+          this.timer++;
+      }.bind(this),1000)
+    }
 }
