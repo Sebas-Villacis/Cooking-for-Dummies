@@ -21,6 +21,7 @@ export class CompetenciaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public RecetaServiciosProvider:RecetaServiciosProvider) {
     //this.searchNombre('lasagna');
     this.recetas=navParams.get('item');
+    this.startTimer();
     
   }
 
