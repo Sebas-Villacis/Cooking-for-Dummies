@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Competencia;
 use Illuminate\Http\Request;
 
 class CompetenciasDP extends Controller
@@ -40,7 +40,7 @@ class CompetenciasDP extends Controller
         $descripcion = $request->input('matdescripcion');
         $fechacreacion = $request->input('matfechacreacion');
        $newcompetencia = new Competencia();
-       $newcompetencia->matnombre=$nombreReceta;
+       $newcompetencia->matnombre=$competencia;
        $newcompetencia->matfechacreacion=$fechacreacion;
        $newcompetencia->mattiempo=$tiempo;
        $newcompetencia->matdescripcion=$descripcion;

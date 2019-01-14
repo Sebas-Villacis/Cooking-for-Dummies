@@ -25903,6 +25903,11 @@ page-recetas .image-container {
   background-size: cover;
 }
 
+page-recetas img {
+  max-height: 25%;
+  width: auto;
+}
+
 page-recetas h3 {
   color: #F60543;
   font-style: italic;

@@ -25,6 +25,7 @@ import { CompetenciaPageModule } from '../pages/competencia/competencia.module';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
+import { MatchesServiciosProvider } from '../providers/matches-servicios/matches-servicios';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { HttpModule } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RecetaServiciosProvider,
     AuthProvider,
-    CrudProvider
+    CrudProvider,
+    MatchesServiciosProvider
   ]
 })
 export class AppModule {}
