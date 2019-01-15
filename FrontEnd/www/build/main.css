@@ -25750,6 +25750,11 @@ page-competencia button {
   background-color: white;
 }
 
+page-competencia img {
+  height: 200px;
+  width: 100%;
+}
+
 .tutorial-page .toolbar-background {
   background: #fff;
   border-color: transparent;
@@ -25897,13 +25902,27 @@ page-receta-dettale button {
   background-color: white;
 }
 
+page-receta-dettale img {
+  height: 150px;
+  width: 100%;
+}
+
 page-recetas .image-container {
+<<<<<<< HEAD
   height: 100%;
+=======
+  min-height: 200px;
+>>>>>>> 4ada3b1d5cfd6d4cb0fb30eef957910f572cf686
   background-size: cover;
 }
 
 page-recetas img {
+<<<<<<< HEAD
   height: 100%;
+=======
+  height: 200px;
+  width: 100%;
+>>>>>>> 4ada3b1d5cfd6d4cb0fb30eef957910f572cf686
 }
 
 page-recetas h3 {

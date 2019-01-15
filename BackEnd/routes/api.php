@@ -37,3 +37,5 @@ Route::get('RecetasByTiempo','RecipeController@getByTiempo');
 Route::post('guardarRecetas','RecipeController@store');
 Route::put('actulizarRecetas','RecipeController@update');
 Route::delete('eliminarRecetas','RecipeController@destroy');
+//logros
+Route::post('Logro','ScoreDP@store');

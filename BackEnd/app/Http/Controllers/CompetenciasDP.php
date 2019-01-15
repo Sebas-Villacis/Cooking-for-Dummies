@@ -34,11 +34,18 @@ class CompetenciasDP extends Controller
      */
     public function store(Request $request)
     {
-        $competencia = $request->input('matnombre');
+        $ultimo = Competencia::all()->sortBy('matnombre')->last();
+        if($ultimo==null)
+        {
+            $competencia=1;
+        }
+        else{$codigo = (int)$ultimo->matnombre;
+            $competencia = $codigo+1;}
+       // $competencia = $request->input('matnombre');
         $tiempo = $request->input('mattiempo');
         $receta = $request->input('recid');
         $descripcion = $request->input('matdescripcion');
-        $fechacreacion = $request->input('matfechacreacion');
+        $fechacreacion = date("Y/m/d");
        $newcompetencia = new Competencia();
        $newcompetencia->matnombre=$competencia;
        $newcompetencia->matfechacreacion=$fechacreacion;

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ModalController, AlertController } from 'ionic-angular';
-
-/**
- * Generated class for the LogroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CompletarRecetaPage } from '../completar-receta/completar-receta';
+import { LogroServiciosProvider } from '../../providers/logro-servicios/logro-servicios';
 
 @IonicPage()
 @Component({
@@ -14,11 +9,16 @@ import { IonicPage, NavController, NavParams, ToastController, ModalController, 
   templateUrl: 'logro.html',
 })
 export class LogroPage {
+  recetas : any;
+  tiempo: any;
+  public puntaje = 0;
 
-  /*constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }*/
+  constructor(private toastCtrl: ToastController, public navCtrl: NavController,public navParams: NavParams, public LogroServiciosProvider:LogroServiciosProvider) {
+    this.recetas=navParams.get('item');
+    this.tiempo=navParams.get('item2');
+    this.puntaje = (this.tiempo/(this.recetas.rectiempo))*600 
 
-  constructor(private toastCtrl: ToastController) {}
+  }
 
   presentToastPuntosGanados() {
     let toast = this.toastCtrl.create({
@@ -51,5 +51,25 @@ export class LogroPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogroPage');
   }
+  GuardarLogro() {
+    let val = {
+      "scovalor": this.puntaje,
+      "scocompetencia": "Competencia Finalizada"
+    }
+    console.log(val);
+    this.LogroServiciosProvider.Store(val)
+        .subscribe(
+            (data)=> {
+            },
+            (error) => {
+              console.log(error);
+            }
+        )
+  }
+
+  goBack(){
+    this.GuardarLogro();
+    this.navCtrl.setRoot(CompletarRecetaPage);
+    }
 
 }

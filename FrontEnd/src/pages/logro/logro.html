@@ -6,12 +6,7 @@
 -->
 <ion-header> 
 
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>logro</ion-title>
-  </ion-navbar>
+  
   
 </ion-header>
 
@@ -20,6 +15,7 @@
 
 <ion-item text-center>
   <br><h3>¡HAN DESBLOQUEADO UN LOGRO!</h3><br>
+  <br><h3>PUNTAJE: {{puntaje}}</h3><br>
   <ion-img src="../../assets/imgs/principiantes_enamoradizos.jpeg" width="250" height="375" class="slide-image"></ion-img><br><br>
   <button ion-button color="light" (click)="goBack()" round>SIGUIENTE</button>
 </ion-item>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\score;
+use App\Competencia;
 //require 'ScoreMD.php';
 
 class ScoreDP extends Controller
@@ -36,15 +37,26 @@ class ScoreDP extends Controller
      */
     public function store(Request $request)
     {
+        $ultimo = score::all()->sortBy('scoid')->last();
+        if($ultimo==null)
+        {
+            $codigo=1;
+        }
+        else{$codigo = $ultimo->scoid+1;}
         $newScore = new score();
-        $newScore = \App\score::find(1);
+        $comp = Competencia::all()->sortBy('matnombre')->last();
+        $competencia = $comp->matnombre;
+        $puntaje = $request->input('scovalor');
+        $descripcion = $request->input('scocompetencia');
+       $newscore = new score();
+       $newscore->matnombre=$competencia;
+       $newscore->scoid=$codigo;
+       $newscore->scovalor=$puntaje;
+       $newscore->scocompetencia=$descripcion;
 
-        $newScore->id_usuario = $request->input('usuario');
-        $newScore->valor = $request->input('valor');
-        $newScore->id_competencia = $request->input('competencia');
-        $newScore->save();
 
-        return back();
+       $newscore->save();
+       return back()->with(['message'=> 'Competencia creada con éxito']);
     }
 
     /**

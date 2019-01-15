@@ -14,20 +14,17 @@ export class MatchesServiciosProvider {
   basepath="/api";
   constructor(public http: HttpClient,private _platform:Platform) {
     if (this._platform.is("cordova")){
+<<<<<<< HEAD
       this.basepath = apiKey;
+=======
+      this.basepath = "http://127.0.0.1:8000/api"
+>>>>>>> 4ada3b1d5cfd6d4cb0fb30eef957910f572cf686
     }
   }
   Store(datos){
     return this.http.post(this.basepath.concat('/Competencia/'),datos,);
   }
 
-  getRecetasByCategory(buscar){
-    
-    return this.http.get(this.basepath.concat('/RecetasByCategoria/'+buscar));
-  }
-  getRecetasByName(buscar){
-    
-    return this.http.get(this.basepath.concat('/RecetasByNombre/'+buscar));
-  }
+
 
 }

@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { MatchesServiciosProvider } from '../providers/matches-servicios/matches-servicios';
+import { LogroServiciosProvider } from '../providers/logro-servicios/logro-servicios';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MatchesServiciosProvider } from '../providers/matches-servicios/matches
     RecetaServiciosProvider,
     AuthProvider,
     CrudProvider,
-    MatchesServiciosProvider
+    MatchesServiciosProvider,
+    LogroServiciosProvider
   ]
 })
 export class AppModule {}
