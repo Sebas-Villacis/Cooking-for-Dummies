@@ -1,7 +1,7 @@
 import { AuthProvider } from './../../providers/auth/auth';
 import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { InicioPage } from '../inicio/inicio';
+import { RecetasPage } from '../recetas/recetas';
 
 /**
  * Generated class for the LoginPage page.
@@ -41,7 +41,7 @@ export class LoginPage {
 
   myLogIn(){
     if(this.email.trim()!==''){
-      console.log(this.email.trim() + " " + this.password.trim())
+      //console.log(this.email.trim() + " " + this.password.trim())
       if(this.password.trim()===''){
         this.errorFunc('Ingrese su Contraseña')
       }else{
@@ -51,20 +51,16 @@ export class LoginPage {
         };
         this.authService.login(credentials).then((result)=>{
           console.log(result);
-          this.navCtrl.setRoot(InicioPage);
+          this.navCtrl.setRoot(RecetasPage);
         },(err)=>{
           console.log(err);
           this.errorFunc('Credenciales no Validas')
-          console.log("Credenciales: "+JSON.stringify(credentials))
+          //console.log("Credenciales: "+JSON.stringify(credentials))
         });
       }
     }else{
       this.errorFunc('Ingrese una Contraseña valida')
     }
     console.log(console.log(this.email.trim() + " " + this.password.trim()))
-  }
-
-  myLogOut(){
-    this.authService.logout();
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-
+import {apiKey} from '../../app/apiurls/serverurls.js';
 /*
   Generated class for the RecetaServiciosProvider provider.
 

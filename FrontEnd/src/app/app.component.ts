@@ -12,6 +12,7 @@ import { CompetenciaPage } from '../pages/competencia/competencia';
 import { CompletarRecetaPage } from '../pages/completar-receta/completar-receta';
 import { LogroPage } from '../pages/logro/logro';
 import { ControlVozPage } from '../pages/control-voz/control-voz';
+import { RegisterPage } from '../pages/register/register';
 @Component({
   templateUrl: 'app.html'
 })

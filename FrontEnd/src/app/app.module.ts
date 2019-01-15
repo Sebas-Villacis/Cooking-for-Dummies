@@ -41,7 +41,7 @@ import { LogroServiciosProvider } from '../providers/logro-servicios/logro-servi
     RecetaDettalePage,
     ControlVozPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +59,11 @@ import { LogroServiciosProvider } from '../providers/logro-servicios/logro-servi
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
+    LoginPage,
     LogroPage,
     RecetaDettalePage,
     ControlVozPage,
+    RegisterPage,
   ],
   providers: [
     StatusBar,
