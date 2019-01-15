@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecetaServiciosProvider } from '../../providers/receta-servicios/receta-servicios';
 import { RecetasPage } from '../recetas/recetas';
+import { LogroPage } from '../logro/logro';
 import { MatchesServiciosProvider } from '../../providers/matches-servicios/matches-servicios';
 
 /**
@@ -32,6 +33,15 @@ export class CompetenciaPage {
   YourFancyButton(){
     this.navCtrl.setRoot(RecetasPage);
     }
+    getValue(){
+      return this.recetas;
+    }
+    click()
+    {
+      this.navCtrl.push(LogroPage,{
+        item:this.getValue(),item2:this.timer
+      });
+    }
 
     startTimer() {
       var intervalVar = setInterval(function(){
@@ -54,7 +64,7 @@ export class CompetenciaPage {
                 console.log(error);
               }
           )
-          this.YourFancyButton();
+          this.click();
   
     }
   

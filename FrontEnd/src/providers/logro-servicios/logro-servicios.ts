@@ -1,32 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-
 /*
-  Generated class for the RecetaServiciosProvider provider.
+  Generated class for the LogroServiciosProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class RecetaServiciosProvider {
+export class LogroServiciosProvider {
   basepath="/api";
   constructor(public http: HttpClient,private _platform:Platform) {
     if (this._platform.is("cordova")){
       this.basepath = "http://127.0.0.1:8000/api"
     }
   }
-  getRecetas(){
-    return this.http.get(this.basepath.concat('/RecetasImagenes'));
+  Store(datos){
+    return this.http.post(this.basepath.concat('/Logro/'),datos,);
   }
-
-  getRecetasByCategory(buscar){
-    
-    return this.http.get(this.basepath.concat('/RecetasByCategoria/'+buscar));
-  }
-  getRecetasByName(buscar){
-    
-    return this.http.get(this.basepath.concat('/RecetasByNombre/'+buscar));
-  }
-
 }
