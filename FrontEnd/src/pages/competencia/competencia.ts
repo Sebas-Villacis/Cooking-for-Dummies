@@ -40,11 +40,9 @@ export class CompetenciaPage {
     }
     GuardarCompetencia() {
       let val = {
-        "matnombre": "prueba2",
         "recid": this.recetas.recid,
         "mattiempo": this.timer,
-        "matdescripcion": "Competencia Finalizada",
-        "matfechareacion": "2019-01-15"
+        "matdescripcion": "Competencia Finalizada"
       }
       console.log(val);
       this.MatchesServiciosProvider.Store(val)

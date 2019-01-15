@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ModalController, AlertController } from 'ionic-angular';
+import { CompletarRecetaPage } from '../completar-receta/completar-receta';
 
-/**
- * Generated class for the LogroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,10 +10,7 @@ import { IonicPage, NavController, NavParams, ToastController, ModalController, 
 })
 export class LogroPage {
 
-  /*constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }*/
-
-  constructor(private toastCtrl: ToastController) {}
+  constructor(private toastCtrl: ToastController, public navCtrl: NavController) {}
 
   presentToastPuntosGanados() {
     let toast = this.toastCtrl.create({
@@ -51,5 +43,9 @@ export class LogroPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogroPage');
   }
+
+  goBack(){
+    this.navCtrl.setRoot(CompletarRecetaPage);
+    }
 
 }

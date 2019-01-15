@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-
+import { RecetasPage } from '../recetas/recetas';
 /**
  * Generated class for the CompletarRecetaPage page.
  *
@@ -22,9 +22,9 @@ export class CompletarRecetaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompletarRecetaPage');
   }
-  goBack():void{
-    this.navCtrl.pop();
-  }
+  goBack() {
+    this.navCtrl.setRoot(RecetasPage);
+    }
 
   showAlert() {
     const alert = this.alertCtrl.create({
@@ -33,5 +33,6 @@ export class CompletarRecetaPage {
       buttons: ['Siguiente']
     });
     alert.present();
+    this.goBack();
   }
 }
