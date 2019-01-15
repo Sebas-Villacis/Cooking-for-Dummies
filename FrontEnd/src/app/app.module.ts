@@ -40,7 +40,7 @@ import { MatchesServiciosProvider } from '../providers/matches-servicios/matches
     RecetaDettalePage,
     ControlVozPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +58,11 @@ import { MatchesServiciosProvider } from '../providers/matches-servicios/matches
     RecetasPage,
     CompetenciaPage,
     CompletarRecetaPage,
+    LoginPage,
     LogroPage,
     RecetaDettalePage,
     ControlVozPage,
+    RegisterPage,
   ],
   providers: [
     StatusBar,

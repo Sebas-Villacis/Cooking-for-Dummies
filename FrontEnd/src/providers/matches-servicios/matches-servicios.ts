@@ -2,6 +2,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
+import {apiKey} from '../../app/apiurls/serverurls.js';
 /*
   Generated class for the MatchesServiciosProvider provider.
 
@@ -13,7 +14,7 @@ export class MatchesServiciosProvider {
   basepath="/api";
   constructor(public http: HttpClient,private _platform:Platform) {
     if (this._platform.is("cordova")){
-      this.basepath = "http://127.0.01:8000/api"
+      this.basepath = apiKey;
     }
   }
   Store(datos){
